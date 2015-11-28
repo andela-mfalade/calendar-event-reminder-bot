@@ -13,8 +13,8 @@ app.listen(port, function() {
     console.log(port + " is where the magic happens.")
 })
 
-app.post('/testss', function(req, res, next) {
-    var userName = req.body.username;
+app.post('/hello', function(req, res, next) {
+    var userName = req.body.user_name;
     var botPayLoad = {
         text: "Hello " + userName + ". Welcome here."
     };
