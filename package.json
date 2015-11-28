@@ -1,0 +1,23 @@
+{
+  "name": "y",
+  "version": "0.0.1",
+  "description": "A cool bot to do cool stuff",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andela-mfalade/cool-bot.git"
+  },
+  "author": "andela-mfalade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andela-mfalade/cool-bot/issues"
+  },
+  "homepage": "https://github.com/andela-mfalade/cool-bot",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3"
+  }
+}
