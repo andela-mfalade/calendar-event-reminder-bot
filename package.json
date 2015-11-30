@@ -18,6 +18,9 @@
   "homepage": "https://github.com/andela-mfalade/cool-bot",
   "dependencies": {
     "body-parser": "^1.14.1",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "google-auth-library": "^0.9.7",
+    "googleapis": "^2.1.6",
+    "slack-client": "^1.4.1"
   }
 }
