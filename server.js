@@ -14,4 +14,4 @@ app.listen(port, function() {
 
 require('./controllers/slackbot.login.controller')(slack);
 require('./controllers/slackbot.message.controller')(slack);
-require('./controllers/app.route.controller')(app)
+require('./controllers/app.route.controller')(app);

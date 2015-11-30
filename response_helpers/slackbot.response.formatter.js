@@ -2,6 +2,7 @@
 
 var responseMsg = {};
 var coolBarColors = ['#439FE0', '#7CD197', '#9B59B6', '#E67E22', '#34495E', '#DB0A5B', '#674172', '#F5D76E'];
+var dateParser = require('../response_helpers/date.parser');
 
 // Response for when a user sends the keyword "help" to tweetbo 
 responseMsg.create_HELP_Response = function(username) {
@@ -36,10 +37,11 @@ responseMsg.create_DO_YOU_NEED_HELP_Response = function() {
 responseMsg.create_UPCOMING_Response = function(events) {
     var attachmentsArray = [{ "title": "Your Upcoming Events."}];
     events.map(function(event) {
+        var eventDate = dateParser.convertDate(event.start_time);
         attachmentsArray.push(
             {
                 "fallback": event.event_summary,
-                "text": event.start_time + " -> " + event.event_summary,
+                "text": eventDate + " -> " + event.event_summary,
                 "color": coolBarColors[Math.floor(Math.random() * 8)]
             }
         )
