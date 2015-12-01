@@ -2,7 +2,7 @@
 
 var responseMsg = {};
 var coolBarColors = ['#439FE0', '#7CD197', '#9B59B6', '#E67E22', '#34495E', '#DB0A5B', '#674172', '#F5D76E'];
-var dateParser = require('../response_helpers/date.parser');
+var dateParser = require('./time.helper');
 
 // Response for when a user sends the keyword "help" to tweetbo 
 responseMsg.create_HELP_Response = function(username) {
@@ -14,6 +14,20 @@ responseMsg.create_HELP_Response = function(username) {
                 "mrkdwn": true,
                 "mrkdwn_in": ["text", "pretext"],
                 "color": "#7CD197"
+            }
+        ]
+    };
+};
+
+responseMsg.create_REMINDER = function (event_summary, eventTime) {
+    return {
+        "attachments": [
+            {
+                "fallback": "`Upcoming Event`: " + "*" + event_summary + "*" + ". \n\n `Time`: " + eventTime,
+                "text": "`Upcoming Event`: " + "*" + event_summary + "*" + ". \n\n `Time`: " + eventTime,
+                "mrkdwn": true,
+                "mrkdwn_in": ["text", "pretext"],
+                "color": "#9B59B6"
             }
         ]
     };
@@ -48,8 +62,6 @@ responseMsg.create_UPCOMING_Response = function(events) {
     });
     return { "attachments": attachmentsArray };
 };
-
-
 
 responseMsg.create_INVALID_ENTRY_response = function () {
     var attachmentsArray = [{ 

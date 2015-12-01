@@ -1,6 +1,8 @@
 'use strict';
 
-var responseFormatter = require('./../response_helpers/slackbot.response.formatter');
+var responseFormatter = require('./../response_helpers/slackbot.response.helper');
+var reminder = require('./event.reminder.controller');
+var googleCalendar = require('./google.calendar.api.controller.js')
 var messageCount = 0;
 
 module.exports = function (slack) {
@@ -36,7 +38,7 @@ module.exports = function (slack) {
                         var response = responseFormatter.create_UPCOMING_Response(upcomingCalendarEvents);
                         channel.postMessage(response);
                     }
-                    require('./google.calendar.api.controller.js')(getListOfEvents);
+                    googleCalendar(getListOfEvents, channel);
                 }
 
                 else {

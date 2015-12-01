@@ -1,7 +1,9 @@
 'use strict';
 
 
-module.exports = function(getListOfEvents) {
+var reminder = require('./event.reminder.controller');
+
+module.exports = function(getListOfEvents, channel) {
     var finalEventsList = null;
     var fs = require('fs');
     var readline = require('readline');
@@ -16,13 +18,19 @@ module.exports = function(getListOfEvents) {
     function addEventsToList(events) {
         var eventsList = events.reduce(function(res, event) {
                 var start = event.start.dateTime || event.start.date;
-                res.push({
+                var eventDetails = {
                     start_time: start,
                     event_summary: event.summary
-                });
+                };
+                res.push(eventDetails);
+                // Create cronjob for events. 
+                // Look for a way to get channel in this module
+                reminder.createReminder(eventDetails, channel)
                 return res
             }, []);
-        getListOfEvents(eventsList);
+        if(getListOfEvents) {
+          getListOfEvents(eventsList);
+        }
         return eventsList;
     }
     // Load client secrets from a local file.
@@ -121,7 +129,7 @@ module.exports = function(getListOfEvents) {
         auth: auth,
         calendarId: 'primary',
         timeMin: (new Date()).toISOString(),
-        maxResults: 20,
+        maxResults: 5,
         singleEvents: true,
         orderBy: 'startTime'
       }, function(err, response) {
