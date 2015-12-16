@@ -10,7 +10,7 @@ responseMsg.create_HELP_Response = function(username) {
         "attachments": [
             {
                 "fallback": "Hi " + username + ". \n- Below is a list of Cool bot commands.\n \n",
-                "text": "`help`: To show the help menu. \n\n  `upcoming`: To view the next 20 upcoming events \n\n",
+                "text": "`help`: To show the help menu. \n\n  `upcoming`: To view the next 5 upcoming events \n\n",
                 "mrkdwn": true,
                 "mrkdwn_in": ["text", "pretext"],
                 "color": "#7CD197"
